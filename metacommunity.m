@@ -109,7 +109,7 @@ i=i+1; #end of the while loop
 end
 
 #final abundances of all species in all patches
-save(output, "x");
+save(output, "t", "x");
 
 toc() #reports the number of seconds elapsed
 
