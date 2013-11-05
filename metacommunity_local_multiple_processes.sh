@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Starting 4 processes"
-for i in {1..4} ;
+echo "Starting 2 processes"
+for i in {1..2} ;
 do
-octave --eval "metacommunity('diary$i.txt')" &
+octave --silent --eval "metacommunity('dynamics$i.mat')" &
 done
 
 

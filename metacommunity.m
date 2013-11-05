@@ -1,16 +1,10 @@
-function metacommunity(logg)
-
-#start recording output using diary
-#diary diary1.txt
-diary (logg);
+function metacommunity(output)
+# stochastic competition model - n species with logistic growth in n patches
 
 #turn off the broadcasting warning
-warning ("off", "Octave:broadcast");
+warning("off", "Octave:broadcast");
 
-# stochastic competition model - 2 species with logistic growth in a single patch
 tic() #set timer
-clear
-set(0,'DefaultAxesFontSize',18);
 
 npatches = 5;
 
@@ -115,30 +109,8 @@ i=i+1; #end of the while loop
 end
 
 #final abundances of all species in all patches
-x(:,:,length(x(1,1,:)))
-
+save(output, "x");
 
 toc() #reports the number of seconds elapsed
-
-
-#plot in time
-# colours = [1:5,1:5];
-# lwd = [1,1,1,1,1,2,2,2,2,2];
-# 
-# for pa = 1:npatches
-#   figure()
-#   dat = reshape(x(pa,:,:),nspecies,length(x(pa,:,:)));
-#   for sp = 1:nspecies
-#     plot(t,dat(sp,:),int2str(colours(sp)),'LineWidth',lwd(sp));
-#     hold on;
-#   endfor
-#   axis([0,t_max,0,max(max(max(x)))*1.1]);
-#   title('Patch')
-#   xlabel('t');
-#   ylabel('x1, x2');
-# endfor
-
-#end recording
-diary off
 
 endfunction
