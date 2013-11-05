@@ -1,5 +1,8 @@
+function metacommunity(logg)
+
 #start recording output using diary
-diary diary1.txt
+#diary diary1.txt
+diary (logg);
 
 #turn off the broadcasting warning
 warning ("off", "Octave:broadcast");
@@ -138,3 +141,4 @@ toc() #reports the number of seconds elapsed
 #end recording
 diary off
 
+endfunction
