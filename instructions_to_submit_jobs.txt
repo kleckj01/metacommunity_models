@@ -1,0 +1,19 @@
+#connect to the ethz network using VPN
+
+#connect to brutus with X11-forwarding
+ssh -Y kleckaja@brutus.ethz.ch
+
+#use gFTP to transfer file to and from my brutus folder
+
+#load octave
+module load octave
+
+#settings to submit a job (job name, name of the output file, neme of the error file, number of CPUs, memmory, time in hours, command to run)
+#in this case I am evaluating a function, so that I can pass a parameter value to it
+bsub -J meta -o %J.out -e %J.err -n 1 -R "rusage[mem=1024]" -W 1:00 octave --eval "metacommunity('dynamics.mat')"
+
+#try to run a job array
+bsub -J "meta[1-10]" -o %J_%I.out -e %J_%I.err -n 1 -R "rusage[mem=1024]" -W 1:00 octave --eval "metacommunity('metacommunity_\$LSB_JOBINDEX.mat')"
+
+#or use a bash script which can contain a lot of different things and calls to programs beside the job submission command (in the single line form above). In that case run the script this way:
+bash script.sh
