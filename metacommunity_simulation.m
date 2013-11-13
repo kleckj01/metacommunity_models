@@ -72,7 +72,7 @@ while(t(i)<t_max)
       p_select = 1:npatches;#select patch for immigration; in this case selection is random (all patches have the same probability of receiving the immigrant)
       p_select(select_patch) = []; #exclude the patch where the migrant originates
       if(length(p_select) > 1)
-	immigration_patch = p_select(round(unifrnd(1,length(p_select)))); #select randomly one patch
+	immigration_patch = p_select(randperm(length(p_select))(1); #select randomly one patch
 	else
 	immigration_patch = p_select;
       end
