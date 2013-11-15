@@ -10,9 +10,11 @@ The function plot_dynamics plots the temporal dynamics in individual patches
 
 The following commands run everything:
 
+clear
 metacommunity_input("in_test.mat")
 load("in_test.mat")
-metacommunity_simulation("in_test.mat","out_test.mat")
+metacommunity_simulation_with_disturbance("in_test.mat","out_test.mat")
 load("out_test.mat")
 plot_dynamics(t,x)
+
 
